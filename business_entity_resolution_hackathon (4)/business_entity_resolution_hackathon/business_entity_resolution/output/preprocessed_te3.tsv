@@ -1,0 +1,15 @@
+entity_id	business_name	business_address	country	name_clean	address_clean	country_clean
+S3-00017	ABC Tech Pvt Ltd	12 Gandhi Road, Chennai	India	abc tech pvt ltd	12 gandhi rd chennai	india
+S3-00018	Green Leaf Restaurant	18 Park Street, Kolkata	India	green leaf restaurant	18 park st kolkata	india
+S3-00019	Sunrise Electronics Corporation	72 Market Road, Mumbai	India	sunrise electronics corp	72 market rd mumbai	india
+S3-00020	Global Textiles & Garments	8 Industrial Estate, Surat	India	global textiles and garments	8 industrial estate surat	india
+S3-00021	INFOSYS TECHNOLOGIES LIMITED	44 IT Park Road, Bengaluru	India	infosys tech ltd	44 it park rd bengaluru	india
+S3-00022	Amazon Web Services Inc	410 Terry Avenue, Seattle	United States	amazon web services inc	410 terry ave seattle	united states
+S3-00023	North Star Cafe	22 King Street, Pune	India	north star cafe	22 king st pune	india
+S3-00024	Fresh Basket Supermarket	101 Central Avenue, Trichy	India	fresh basket supermarket	101 central ave trichy	india
+S3-00025	ABC Technologies	12 Gandhi Road, Chennai	India	abc tech	12 gandhi rd chennai	india
+S3-00026	Green Leaf Cafe	18 Park Street, Kolkata	India	green leaf cafe	18 park st kolkata	india
+S3-00027	Sunrise Electric Corp	72 Market Road, Mumbai	India	sunrise electric corp	72 market rd mumbai	india
+S3-00028	Metro Auto Service	5 Station Road, Madurai	India	metro auto service	5 station rd madurai	india
+S3-00029	Amazon Web Services	Seattle Downtown	United States	amazon web services	seattle downtown	united states
+S3-00030	North Star Coffee	23 King Street, Pune	India	north star coffee	23 king st pune	india

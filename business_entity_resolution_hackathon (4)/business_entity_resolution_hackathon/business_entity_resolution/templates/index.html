@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<section class="hero">
+ <div><h2>Business Entity Resolution</h2><p>Load or generate data, train the matching model, run inference, and inspect the final business matches.</p></div>
+ <button class="primary" onclick="post('/api/generate')">Generate Demo Dataset</button>
+</section>
+<div class="grid cards">
+ <div class="card"><span>Dataset</span><strong id="datasetState">—</strong><small>Training & test data</small></div>
+ <div class="card"><span>Preprocessing</span><strong id="prepState">—</strong><small>Normalized records</small></div>
+ <div class="card"><span>ML Model</span><strong id="modelState">—</strong><small>Random Forest</small></div>
+ <div class="card"><span>Final Results</span><strong id="resultState">—</strong><small>matching_results.tsv</small></div>
+</div>
+<div class="panel">
+ <h3>Pipeline</h3>
+ <div class="pipeline">
+  <div>01<br><b>Dataset</b></div><i>→</i><div>02<br><b>Preprocess</b></div><i>→</i><div>03<br><b>Blocking</b></div><i>→</i><div>04<br><b>Features</b></div><i>→</i><div>05<br><b>Train</b></div><i>→</i><div>06<br><b>Test</b></div><i>→</i><div>07<br><b>Results</b></div>
+ </div>
+</div>
+<div class="grid two">
+ <div class="panel"><h3>Quick Actions</h3>
+  <div class="actions">
+   <button onclick="post('/api/generate')">1. Generate Dataset</button>
+   <button onclick="post('/api/preprocess')">2. Preprocess</button>
+   <button onclick="post('/api/candidates')">3. Generate Candidates</button>
+   <button onclick="post('/api/train')">4. Train Model</button>
+   <button onclick="post('/api/evaluate')">5. Evaluate</button>
+   <button onclick="post('/api/test')">6. Run Test Prediction</button>
+  </div>
+ </div>
+ <div class="panel"><h3>What the model does</h3><p>It compares business names, addresses and countries using fuzzy similarity and TF-IDF features, then predicts whether candidate records refer to the same business.</p></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+async function refresh(){
+ const s=await fetch('/api/status').then(r=>r.json());
+ for(const [id,key] of [['datasetState','dataset'],['prepState','preprocessed'],['modelState','model'],['resultState','results']])
+   document.getElementById(id).textContent=s[key]?'READY':'PENDING';
+}
+refresh();
+</script>
+{% endblock %}

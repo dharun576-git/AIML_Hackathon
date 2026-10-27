@@ -1,0 +1,16 @@
+entity_id	business_name	business_address	country	name_clean	address_clean	country_clean
+S1-00001	ABC Technologies Private Limited	12 Gandhi Road, Chennai	India	abc tech pvt ltd	12 gandhi rd chennai	india
+S1-00002	Sri Lakshmi Hospital	45 MG Road, Coimbatore	India	sri lakshmi hospital	45 mg rd coimbatore	india
+S1-00003	Green Leaf Restaurant	18 Park Street, Kolkata	India	green leaf restaurant	18 park st kolkata	india
+S1-00004	Tata Consultancy Services Limited	9 Mount Road, Chennai	India	tata consultancy services ltd	9 mount rd chennai	india
+S1-00005	Sunrise Electronics Corporation	72 Market Road, Mumbai	India	sunrise electronics corp	72 market rd mumbai	india
+S1-00006	Blue Star Logistics Private Limited	21 Ring Road, Delhi	India	blue star logistics pvt ltd	21 ring rd delhi	india
+S1-00007	Global Textiles and Garments	8 Industrial Estate, Surat	India	global textiles and garments	8 industrial estate surat	india
+S1-00008	River View Hotel	4 Lake Road, Kochi	India	river view hotel	4 lake rd kochi	india
+S1-00009	Infosys Technologies Limited	44 IT Park Road, Bengaluru	India	infosys tech ltd	44 it park rd bengaluru	india
+S1-00010	Apollo Pharmacy Limited	16 Main Street, Hyderabad	India	apollo pharmacy ltd	16 main st hyderabad	india
+S1-00011	Amazon Web Services Inc	410 Terry Avenue, Seattle	United States	amazon web services inc	410 terry ave seattle	united states
+S1-00012	Microsoft Corporation	One Microsoft Way, Redmond	United States	microsoft corp	one microsoft way redmond	united states
+S1-00013	North Star Cafe	22 King Street, Pune	India	north star cafe	22 king st pune	india
+S1-00014	Metro Auto Parts Private Limited	5 Station Road, Madurai	India	metro auto parts pvt ltd	5 station rd madurai	india
+S1-00015	Fresh Basket Supermarket	101 Central Avenue, Trichy	India	fresh basket supermarket	101 central ave trichy	india

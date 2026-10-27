@@ -1,0 +1,17 @@
+entity_id	business_name	business_address	country	name_clean	address_clean	country_clean
+S3-00001	Sri Lakshmi Hospital	45 MG Road, Coimbatore	India	sri lakshmi hospital	45 mg rd coimbatore	india
+S3-00002	GREEN LEAF RESTAURANT	18 Park St Kolkata	India	green leaf restaurant	18 park st kolkata	india
+S3-00003	Sunrise Electronics Corporation	Mumbai, 72 Market Rd	India	sunrise electronics corp	mumbai 72 market rd	india
+S3-00004	Blue Star Logistics Private Limited	21 Ring Road, Delhi	India	blue star logistics pvt ltd	21 ring rd delhi	india
+S3-00005	RIVER VIEW HOTEL	4 Lake Road, Kochi	India	river view hotel	4 lake rd kochi	india
+S3-00006	Infosys Technologies Limited	Bengaluru 44 IT Park Rd	India	infosys tech ltd	bengaluru 44 it park rd	india
+S3-00007	Amazon Web Services Inc	410 Terry Ave, Seattle	United States	amazon web services inc	410 terry ave seattle	united states
+S3-00008	Microsoft Corporation	One Microsoft Way, Redmond	United States	microsoft corp	one microsoft way redmond	united states
+S3-00009	Metro Auto Parts Private Limited	5 Station Road, Madurai	India	metro auto parts pvt ltd	5 station rd madurai	india
+S3-00010	Fresh Basket Supermarket	101 Central Ave Trichy	India	fresh basket supermarket	101 central ave trichy	india
+S3-00011	ABC Technologies	12 Gandhi Road, Chennai	India	abc tech	12 gandhi rd chennai	india
+S3-00012	Green Leaf Cafe	18 Park Street, Kolkata	India	green leaf cafe	18 park st kolkata	india
+S3-00013	Sunrise Electric Corp	72 Market Road, Mumbai	India	sunrise electric corp	72 market rd mumbai	india
+S3-00014	Metro Auto Service	5 Station Road, Madurai	India	metro auto service	5 station rd madurai	india
+S3-00015	Amazon Web Services	Seattle Downtown	United States	amazon web services	seattle downtown	united states
+S3-00016	North Star Coffee	23 King Street, Pune	India	north star coffee	23 king st pune	india

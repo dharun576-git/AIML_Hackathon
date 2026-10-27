@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block title %}Model Training{% endblock %}
+{% block content %}
+<div class="grid two">
+<div class="panel"><h2>Train Matching Model</h2><p>Random Forest learns from candidate pairs created from the training sources and ground truth.</p><button class="primary" onclick="runTrain()">Train Model</button><div id="trainMsg" class="resultbox">Model not trained yet.</div></div>
+<div class="panel"><h2>Feature Engineering</h2><div class="feature-list"><span>Name TF-IDF</span><span>Name Jaccard/Fuzzy</span><span>Address TF-IDF</span><span>Address Fuzzy</span><span>Country Match</span><span>Length Differences</span></div></div>
+</div>
+<div class="panel"><h2>Validation Metrics</h2><div class="grid cards"><div class="card"><span>Accuracy</span><strong id="acc">—</strong></div><div class="card"><span>Precision</span><strong id="pre">—</strong></div><div class="card"><span>Recall</span><strong id="rec">—</strong></div><div class="card"><span>F0.5</span><strong id="f05">—</strong></div></div><pre id="cm"></pre></div>
+{% endblock %}
+{% block scripts %}
+<script>
+async function runTrain(){
+ document.getElementById('trainMsg').textContent='Training...';
+ const r=await fetch('/api/train',{method:'POST'}); const d=await r.json();
+ if(!d.ok){toast(d.error,true);return}
+ document.getElementById('trainMsg').textContent=`Trained on ${d.training_pairs} candidate pairs; validated on ${d.validation_pairs}.`;
+ setMetrics(d);
+}
+async function init(){const r=await fetch('/api/evaluate',{method:'POST'}); const d=await r.json(); if(d.ok)setMetrics(d)}
+function setMetrics(d){for(const [id,k] of [['acc','accuracy'],['pre','precision'],['rec','recall'],['f05','f0_5']])document.getElementById(id).textContent=d[k]??'—'; document.getElementById('cm').textContent='Confusion Matrix\\n'+JSON.stringify(d.confusion_matrix);}
+init();
+</script>
+{% endblock %}

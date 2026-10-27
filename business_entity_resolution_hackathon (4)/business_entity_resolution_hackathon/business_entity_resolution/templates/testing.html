@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}
+{% block title %}Testing & Inference{% endblock %}
+{% block content %}
+<div class="panel">
+<h2>Run Test Prediction</h2>
+<p>The test set has no labels. The trained model scores the candidate pairs and creates the final matching file.</p>
+<label>Match confidence threshold</label>
+<input id="threshold" type="number" min="0" max="1" step="0.01" value="0.72">
+<button class="primary" onclick="runTest()">Run Prediction</button>
+<div id="testMsg" class="resultbox">Ready.</div>
+</div>
+<div class="panel"><h3>Inference sequence</h3><div class="pipeline compact"><div>Load test</div><i>→</i><div>Preprocess</div><i>→</i><div>Block</div><i>→</i><div>Score</div><i>→</i><div>Filter</div><i>→</i><div>Export</div></div></div>
+{% endblock %}
+{% block scripts %}
+<script>
+async function runTest(){
+ const threshold=parseFloat(document.getElementById('threshold').value);
+ document.getElementById('testMsg').textContent='Running prediction...';
+ const r=await fetch('/api/test',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({threshold})});
+ const d=await r.json();
+ if(!d.ok){toast(d.error,true);return}
+ document.getElementById('testMsg').textContent=`${d.entities_with_match} of ${d.source1_entities} Source 1 entities received at least one match. Total matches: ${d.total_matches}.`;
+}
+</script>
+{% endblock %}

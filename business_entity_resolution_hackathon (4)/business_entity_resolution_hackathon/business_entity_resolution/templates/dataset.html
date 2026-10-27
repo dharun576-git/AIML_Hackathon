@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dataset
+{% endblock %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div>
+        <h2>Dataset Manager</h2>
+
+        <p>
+            Business entity-resolution dataset loaded from the
+            <strong>dataset/train</strong> folder.
+        </p>
+    </div>
+
+    <button
+        class="primary"
+        onclick="generateDataset()">
+
+        Generate Demo Dataset
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     DATASET COUNTS
+====================================================== -->
+
+<div class="grid cards">
+
+    <div class="card">
+
+        <span>Source 1</span>
+
+        <strong id="n1">0</strong>
+
+        <small>train_source1.tsv</small>
+
+    </div>
+
+
+    <div class="card">
+
+        <span>Source 2</span>
+
+        <strong id="n2">0</strong>
+
+        <small>train_source2.tsv</small>
+
+    </div>
+
+
+    <div class="card">
+
+        <span>Source 3</span>
+
+        <strong id="n3">0</strong>
+
+        <small>train_source3.tsv</small>
+
+    </div>
+
+
+    <div class="card">
+
+        <span>Ground Truth</span>
+
+        <strong id="ng">0</strong>
+
+        <small>train_ground_truth.tsv</small>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     DATASET TABLE
+====================================================== -->
+
+<div class="panel">
+
+    <div class="tabs">
+
+        <button
+            onclick="loadPreview('source1')">
+
+            Source 1
+
+        </button>
+
+
+        <button
+            onclick="loadPreview('source2')">
+
+            Source 2
+
+        </button>
+
+
+        <button
+            onclick="loadPreview('source3')">
+
+            Source 3
+
+        </button>
+
+
+        <button
+            onclick="loadPreview('ground_truth')">
+
+            Ground Truth
+
+        </button>
+
+    </div>
+
+
+    <div id="datasetInfo"
+         style="margin:15px 0;">
+    </div>
+
+
+    <div id="table">
+
+        Loading dataset...
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+
+// =====================================================
+// LOAD DATASET COUNTS
+// =====================================================
+
+async function loadDatasetInfo() {
+
+    try {
+
+        const response =
+            await fetch('/api/dataset');
+
+        const data =
+            await response.json();
+
+
+        document.getElementById("n1")
+            .textContent =
+            data.source1.total;
+
+
+        document.getElementById("n2")
+            .textContent =
+            data.source2.total;
+
+
+        document.getElementById("n3")
+            .textContent =
+            data.source3.total;
+
+
+        document.getElementById("ng")
+            .textContent =
+            data.ground_truth.total;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        toast(
+            "Unable to load dataset information",
+            true
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// LOAD PREVIEW
+// =====================================================
+
+async function loadPreview(source) {
+
+    try {
+
+        const response =
+            await fetch(
+                '/api/preview/' + source
+            );
+
+        const data =
+            await response.json();
+
+
+        if (data.error) {
+
+            toast(
+                data.error,
+                true
+            );
+
+            return;
+        }
+
+
+        document.getElementById(
+            "datasetInfo"
+        ).innerHTML =
+
+            "<strong>" +
+            data.file +
+            "</strong> &nbsp; | &nbsp; " +
+            data.total +
+            " total records";
+
+
+        document.getElementById(
+            "table"
+        ).innerHTML =
+
+            table(
+                data.columns,
+                data.rows
+            );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        toast(
+            "Unable to load dataset",
+            true
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// GENERATE DEMO DATASET
+// =====================================================
+
+async function generateDataset() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/generate",
+                {
+                    method: "POST"
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.ok) {
+
+            toast(
+                data.error ||
+                "Dataset generation failed",
+                true
+            );
+
+            return;
+        }
+
+
+        toast(
+            "Demo dataset generated successfully"
+        );
+
+
+        await loadDatasetInfo();
+
+        await loadPreview(
+            "source1"
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        toast(
+            "Dataset generation failed",
+            true
+        );
+
+    }
+
+}
+
+
+// =====================================================
+// INITIAL LOAD
+// =====================================================
+
+loadDatasetInfo();
+
+loadPreview("source1");
+
+
+</script>
+
+{% endblock %}

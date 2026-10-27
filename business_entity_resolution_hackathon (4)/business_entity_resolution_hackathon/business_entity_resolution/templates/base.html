@@ -1,0 +1,34 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EntityResolve AI</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div class="brand">EntityResolve <span>AI</span></div>
+  <div class="subtitle">AIML Hackathon</div>
+  <nav>
+    <a href="/">Dashboard</a>
+    <a href="/dataset">Dataset</a>
+    <a href="/model">Model Training</a>
+    <a href="/testing">Testing</a>
+    <a href="/results">Results</a>
+  </nav>
+  <div class="side-note">Business Entity Resolution<br><small>ML-powered record matching</small></div>
+</aside>
+<main>
+<header><div><h1>{% block title %}Dashboard{% endblock %}</h1><p>End-to-end entity matching pipeline</p></div><div class="pill" id="statusPill">● Ready</div></header>
+<div id="toast"></div>
+{% block content %}{% endblock %}
+</main>
+</div>
+<script src="/static/js/dashboard.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
